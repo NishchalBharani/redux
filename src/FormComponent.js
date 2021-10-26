@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
+import Axios from 'axios'
+
 import { useDispatch } from "react-redux";
 import { addUserAction } from "./Actions/userAction";
+
+import "materialize-css/dist/css/materialize.min.css"
 
 const FormComponent = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [skill, setSkill] = useState("")
+  const [skill, setSkill] = useState("");
+  const [img, setImg] = useState("")
+  
 
   const dispatch = useDispatch();
 
@@ -24,13 +30,29 @@ const FormComponent = (props) => {
         setSkill(e.target.value)
     }
   };
+
+  
+  var myUrl = document.getElementsByTagName('img')[0]
+
+  const uploadImage = () => {
+    const formData1 = new FormData()
+    formData1.append('file', img)
+    formData1.append('Upload_preset', 'nishchal')
+
+    Axios.post('https://api.cloudinary.com/v1_1/dxjweonxb/image/upload', formData1).then((res) => {
+      console.log(res)
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = {
       name: name,
       email: email,
       phone: phone,
-      skill: skill
+      skill: skill,
+      img: img
     };
     const moveforwardData = () => {
       props.history.push("/usersDetails");
@@ -39,8 +61,9 @@ const FormComponent = (props) => {
     dispatch(addUserAction(formData, moveforwardData));
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <div className="row">
+      <form onSubmit={handleSubmit} class="col s6">
         <input
           type="text"
           value={name}
@@ -75,8 +98,21 @@ const FormComponent = (props) => {
           onChange={handleChange}
           placeholder="Enter Skills"
         />
-        <input type="submit" value="Send Data" />
+        <br />
+
+        <input 
+          type="file" 
+         
+          onChange={(event)=>{
+            setImg(event.target.files[0])
+          }}
+          name="img"
+          placeholder="Upload Image"></input>
+          
+        <input type="submit" value="Send Data" class="wave-effect waves-light btn" />
+        
       </form>
+      </div>
     </div>
   );
 };

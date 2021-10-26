@@ -9,9 +9,10 @@ const UserDetails = () => {
   return (
     <div>
       <h1>Data found</h1>
-      <h1>Name:{user.name}</h1>
-      <h2>email:{user.email}</h2>
-      <h2>phone:{user.phone}</h2>
+      <img src={user.img}/>
+      <h1 className="container">Name: {user.name}</h1>
+      <h2>email: {user.email}</h2>
+      <h2>phone: {user.phone}</h2>
       <h2>skill: {user.skill}</h2>
 
       <Link to="/">Go Back</Link>
