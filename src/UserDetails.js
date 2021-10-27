@@ -7,15 +7,17 @@ const UserDetails = () => {
     return state.user;
   });
   return (
-    <div>
+    <div className="row">
+      <div className="col s8 offset-s4">
       <h1>Data found</h1>
       <img src={user.img}/>
-      <h1 className="container">Name: {user.name}</h1>
-      <h2>email: {user.email}</h2>
-      <h2>phone: {user.phone}</h2>
-      <h2>skill: {user.skill}</h2>
+      <h4>Name: {user.name}</h4>
+      <h5>email: {user.email}</h5>
+      <h5>phone: {user.phone}</h5>
+      <h5>skill: {user.skill}</h5>
 
       <Link to="/">Go Back</Link>
+      </div>
     </div>
   );
 };

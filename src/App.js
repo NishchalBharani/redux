@@ -4,9 +4,10 @@ import UserDetails from "./UserDetails";
 
 export default function App() {
   return (
-    <div class="card-panel">
-      <div class="pink lighter-5">
+    <div className="row">
+      <div >
         <div className="App">
+          <h1 className="col s8 offset-s4">Build Your Resume</h1>
           <Route path="/usersDetails" component={UserDetails} exact />
           <Route path="/" component={FormComponent} exact />
         </div>

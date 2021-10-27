@@ -32,7 +32,7 @@ const FormComponent = (props) => {
   };
 
   
-  var myUrl = document.getElementsByTagName('img')[0]
+  
 
   const uploadImage = () => {
     const formData1 = new FormData()
@@ -61,9 +61,10 @@ const FormComponent = (props) => {
     dispatch(addUserAction(formData, moveforwardData));
   };
   return (
-    <div className="container">
-      <div className="row">
+    <div className="row">
+      <div className="col s8 offset-s4">
       <form onSubmit={handleSubmit} class="col s6">
+        <h6><strong>Enter Name</strong></h6>
         <input
           type="text"
           value={name}
@@ -73,6 +74,7 @@ const FormComponent = (props) => {
         />
         <br />
         <br />
+        <h6><strong>Enter Email</strong></h6>
         <input
           type="email"
           value={email}
@@ -82,6 +84,7 @@ const FormComponent = (props) => {
         />
         <br />
         <br />
+        <h6><strong>Enter Phone number</strong></h6>
         <input
           type="text"
           value={phone}
@@ -91,6 +94,7 @@ const FormComponent = (props) => {
         />
         <br />
         <br />
+        <h6><strong>Enter Skill</strong></h6>
         <input
           type="text"
           value={skill}
@@ -99,7 +103,7 @@ const FormComponent = (props) => {
           placeholder="Enter Skills"
         />
         <br />
-
+        <h6><strong>Upload image</strong></h6>
         <input 
           type="file" 
          
